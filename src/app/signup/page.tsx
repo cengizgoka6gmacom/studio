@@ -8,26 +8,30 @@ import { Label } from '@/components/ui/label';
 import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 
-export default function LoginPage() {
-  const router = useRouter();
+export default function SignupPage() {
+    const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, you'd handle authentication here.
-    // For this demo, we'll just navigate to the home page.
-    router.push('/home');
-  };
+    const handleSignup = (e: React.FormEvent) => {
+        e.preventDefault();
+        // In a real app, you'd handle user creation here.
+        // For this demo, we'll just navigate to the home page.
+        router.push('/home');
+    }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="mx-auto w-full max-w-sm shadow-2xl">
         <CardHeader className="text-center">
-          <Icons.logo className="mx-auto h-12 w-auto text-primary" />
-          <CardTitle className="mt-4 text-2xl font-bold tracking-tight">Welcome Back</CardTitle>
-          <CardDescription>Sign in to find your soul mate</CardDescription>
+            <Icons.logo className="mx-auto h-12 w-auto text-primary" />
+            <CardTitle className="mt-4 text-2xl font-bold tracking-tight">Create an Account</CardTitle>
+            <CardDescription>Join us to start your journey</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleSignup} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" type="text" placeholder="Your Name" required />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input id="email" type="email" placeholder="you@example.com" required />
@@ -37,13 +41,13 @@ export default function LoginPage() {
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full">
-              Sign In
+              Create Account
             </Button>
           </form>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
-            <Link href="/signup" className="underline hover:text-primary">
-              Sign up
+            Already have an account?{' '}
+            <Link href="/" className="underline hover:text-primary">
+              Sign In
             </Link>
           </div>
         </CardContent>
